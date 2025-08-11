@@ -1,0 +1,244 @@
+﻿Imports ListOfPermutations
+Module NarrateOutcome
+     Dim f1 As New ListOfPermutations.Form1
+     Public onnow As String
+     Public CurrentLine As Integer
+     Private aaa As String
+     Private wstr = String.Join(Chr(32), f1.W)
+     Private zzstr = String.Join(Chr(32), f1.ZZ)
+     Private OUTCOME As String
+     Sub vba()
+          f1.GroupBox4.Text &= Chr(10) & " AFTER " & aaa & " which is line " & CurrentLine & " EXECUTES  " & Chr(10)
+          f1.GroupBox4.Show()
+          f1.BringToFront()
+          f1.Show()
+          Application.DoEvents()
+
+     End Sub
+     Sub Main()
+          '  Debugger.Break()
+          Dim tb() As String = System.IO.File.ReadAllLines("C:\Users\vbart\source\REPOS\ListOfPermutations\original.txt")
+          Dim words2() As String
+          aaa = tb(CurrentLine - 1).ToString.Trim
+          words2 = aaa.Split(New Char() {" "c})
+          '  f1.GroupBox4.BackColor = System.Drawing.Color.Black
+          ' f1.GroupBox4.ForeColor = System.Drawing.Color.Purple
+          'Debugger.Break()
+          vba()
+          If onnow = "If 23" Then
+               If CurrentLine = 23 Then
+                    OUTCOME = f1.W(f1.sz) < f1.diff
+                    f1.GroupBox4.Text &= aaa & " is " & OUTCOME & Chr(10)
+               End If
+          End If
+          If onnow = "W(sz) 24" Then
+               If CurrentLine = 24 Then
+                    f1.GroupBox4.Text &= "W(sz) points to W(" & f1.sz & ") whose value is " & f1.W(f1.sz) & Chr(10)
+               End If
+          End If
+          If onnow = "ElseIf 25" Then
+               If CurrentLine = 25 Then
+                    OUTCOME = f1.W(f1.sz) = f1.diff
+                    f1.GroupBox4.Text &= aaa & " is " & OUTCOME & Chr(10)
+
+               End If
+          End If
+          If onnow = "For 26" Then
+               If CurrentLine = 26 Then
+                    f1.GroupBox4.Text &= "For nn = " & f1.sz & "To " & 1 & "Step -1" & Chr(10)
+               End If
+          End If
+          If onnow = "ct 27" Then
+               If CurrentLine = 27 Then
+                    f1.GroupBox4.Text &= " ct is " & f1.ct & Chr(10)
+
+               End If
+          End If
+          If onnow = "If 28" Then
+               If CurrentLine = 28 Then
+                    OUTCOME = f1.W(f1.ct) < f1.diff
+                    f1.GroupBox4.Text &= aaa & " is " & OUTCOME & Chr(10)
+               End If
+          End If
+          If onnow = "WHR 29" Then
+               If CurrentLine = 29 Then
+                    f1.GroupBox4.Text &= " WHR is set equal to " & f1.ct & Chr(10)
+               End If
+          End If
+          If onnow = "Exit 30" Then
+               If CurrentLine = 30 Then
+                    f1.GroupBox4.Text &= " found WHR - EXITING NOW IS CRITICAL " & Chr(10)
+
+               End If
+          End If
+          If onnow = "End 31" Then
+               If CurrentLine = 31 Then
+                    f1.GroupBox4.Text &= " comparison to find position to write to ends " & Chr(10)
+
+               End If
+          End If
+          If onnow = "Next 32" Then
+               If CurrentLine = 32 Then
+                    f1.GroupBox4.Text &= " if nn > 0-continue | if nn = 0 goto next instruction " & Chr(10)
+
+               End If
+          End If
+          If onnow = "W(WHR) 33" Then
+               If CurrentLine = 33 Then
+                    f1.GroupBox4.Text &= " first step of making new W " & Chr(10)
+                    f1.GroupBox4.Text &= "W(WHR) points to W(" & f1.WHR & ") whose value is " & f1.W(f1.WHR) & Chr(10)
+
+               End If
+          End If
+          If onnow = "For 34" Then
+               If CurrentLine = 34 Then
+                    f1.GroupBox4.Text &= " update positions that FOLLOWS W(WHR) " & Chr(10)
+                    f1.GroupBox4.Text &= "For nn = " & f1.WHR + 1 & "To " & f1.sz & "Step 1" & Chr(10)
+               End If
+          End If
+          If onnow = "ct 35" Then
+               If CurrentLine = 35 Then
+                    f1.GroupBox4.Text &= " ct is " & f1.ct & Chr(10)
+
+               End If
+          End If
+          If onnow = "W(nn) 36" Then
+               If CurrentLine = 36 Then
+                    f1.GroupBox4.Text &= " this lines detrminies the type of output- permutation versus combination " & Chr(10)
+                    f1.GroupBox4.Text &= "W(WHR) points to W(" & f1.WHR & ") whose value is " & f1.W(f1.WHR) & Chr(10)
+
+
+               End If
+          End If
+          If onnow = "Next 37" Then
+               If CurrentLine = 37 Then
+                    f1.GroupBox4.Text &= "  if nn > sz goto next instruction " & Chr(10)
+
+               End If
+          End If
+          If onnow = "End 38" Then
+               If CurrentLine = 38 Then
+                    f1.GroupBox4.Text &= " got new W goto next instruction " & Chr(10)
+
+               End If
+          End If
+          If onnow = "Do 41" Then
+               If CurrentLine = 41 Then
+                    OUTCOME = f1.Time2quit = True
+                    f1.GroupBox4.Text &= aaa & " is " & OUTCOME & Chr(10)
+
+
+               End If
+          End If
+          If onnow = "For 42" Then
+               If CurrentLine = 42 Then
+                    f1.GroupBox4.Text &= " W is " & wstr & Chr(10)
+                    f1.GroupBox4.Text &= " ZZ is " & zzstr & Chr(10)
+
+               End If
+          End If
+          If onnow = "SUM 50" Then
+               If CurrentLine = 50 Then
+                    f1.GroupBox4.Text &= " SUM is now " & f1.First & Chr(10)
+
+               End If
+          End If
+          If onnow = "For 51" Then
+               If CurrentLine = 51 Then
+                    f1.GroupBox4.Text &= " add nn to W(nn) to make ZZ - executes " & f1.diff & "times " & Chr(10)
+                    f1.GroupBox4.Text &= "For nn = " & 1 & "To " & f1.diff & "Step 1" & Chr(10)
+
+               End If
+          End If
+          If onnow = "ct 52" Then
+               If CurrentLine = 52 Then
+                    f1.GroupBox4.Text &= " ct is " & f1.ct & Chr(10)
+
+               End If
+          End If
+          If onnow = "SUM 53" Then
+               If CurrentLine = 53 Then
+                    f1.GroupBox4.Text &= " SUM is now " & f1.SUM & Chr(10)
+               End If
+          End If
+          If onnow = "ZZ(nn) 54" Then
+               If CurrentLine = 54 Then
+                    f1.GroupBox4.Text &= "ZZ(nn) points to ZZ(" & f1.ct & ") whose value is " & f1.ZZ(f1.ct) & Chr(10)
+
+               End If
+          End If
+          If onnow = "Next 55" Then
+               If CurrentLine = 55 Then
+                    f1.GroupBox4.Text &= "  if nn = diff + 1 --> goto next instruction " & Chr(10)
+
+               End If
+          End If
+          If onnow = "If 82" Then
+               If CurrentLine = 82 Then
+                    OUTCOME = f1.W(1) = f1.diff
+                    f1.GroupBox4.Text &= aaa & " is " & OUTCOME & Chr(10)
+               End If
+          End If
+          If onnow = "'Debugger.Break() 83" Then
+               If CurrentLine = 83 Then
+
+                    f1.GroupBox4.Text &= " commented out " & Chr(10)
+               End If
+          End If
+          If onnow = "Time2quit 84" Then
+               If CurrentLine = 84 Then
+                    f1.GroupBox4.Text &= " Nothing to process set Time2quit to true " & Chr(10)
+
+               End If
+          End If
+          If onnow = "Environment.Exit(0) 85" Then
+               If CurrentLine = 85 Then
+                    f1.GroupBox4.Text &= " terminate processing with 0 exit code " & Chr(10)
+
+               End If
+          End If
+          If onnow = "End 86" Then
+               If CurrentLine = 86 Then
+                    f1.GroupBox4.Text &= " end comparison tht alerts last subset " & Chr(10)
+
+               End If
+          End If
+          If onnow = "Nxt() 87" Then
+               If CurrentLine = 87 Then
+                    f1.GroupBox4.Text &= " if time2quit is false, create new W " & Chr(10)
+
+
+               End If
+          End If
+          If onnow = "Loop 88" Then
+               If CurrentLine = 88 Then
+                    f1.GroupBox4.Text &= " if time2quit is false, transfer control to line 41 " & Chr(10)
+
+               End If
+          End If
+          If onnow = "BringToFront() 89" Then
+               If CurrentLine = 89 Then
+                    f1.GroupBox4.Text &= " made form visible " & Chr(10)
+
+               End If
+          End If
+          If onnow = "Me.Text 90" Then
+               If CurrentLine = 90 Then
+                    f1.GroupBox4.Text &= " assign value to form's text " & Chr(10)
+
+               End If
+          End If
+          If onnow = "Me.Show() 91" Then
+               If CurrentLine = 91 Then
+                    f1.GroupBox4.Text &= " displayed form's text " & Chr(10)
+
+               End If
+          End If
+          f1.BringToFront()
+          f1.GroupBox4.Show()
+          f1.Show()
+          Application.DoEvents()
+          System.Threading.Thread.Sleep(3000)
+          f1.GroupBox4.Text = Nothing
+     End Sub
+End Module

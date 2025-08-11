@@ -1,0 +1,32 @@
+Comparison about to be made
+ W value about to change
+Comparison about to be made
+ perform actions in loop certain number of times 
+ local variable 
+Comparison about to be made
+
+ leave immediately 
+ transfer control to 22
+ check  nn or i 
+ W value about to change
+ update rhs 
+ perform actions in loop certain number of times 
+ local variable 
+ W value about to change
+ check  nn or i 
+ transfer control to 30
+ created ZZ, get new W
+ perform actions in loop certain number of times 
+ update SUM 
+ perform actions in loop certain number of times 
+ update SUM 
+ ZZ value about to change 
+ check  nn or i 
+ Create new W 
+Comparison about to be made
+ processed last W 
+ transfer control to 79
+ check time2quit 
+ positioned control 
+ assign value to Me.text 
+ prepare to show Me.Text 

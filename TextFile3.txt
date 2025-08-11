@@ -1,0 +1,257 @@
+﻿Imports ListOfPermutations
+Module PlugVariables
+     Dim f1 As New ListOfPermutations.Form1
+     Public onnow As String
+     Public CurrentLine As Integer
+     Private Str1 As String
+     Private wstr = String.Join(Chr(32),  W)
+     Private zzstr = String.Join(Chr(32),  ZZ)
+     Sub vba()
+           GroupBox4.Text = Chr(10) & " before " & Str1 & " which is line " & CurrentLine & " executes  " & Chr(10)
+           GroupBox4.Show()
+           BringToFront()
+           Show()
+          Application.DoEvents()
+
+     End Sub
+     Sub Main()
+          Dim tA() As String = System.IO.File.ReadAllLines("C:\Users\vbart\source\REPOS\ListOfPermutations\original.txt")
+          Dim words() As String
+          Str1 = tA(CurrentLine - 1).ToString.Trim
+          words = Str1.Split(New Char() {" "c})
+          '  GroupBox4.BackColor = System.Drawing.Color.Black
+          ' GroupBox4.ForeColor = System.Drawing.Color.White
+          vba()
+          If onnow = "If 23" Then
+               If CurrentLine = 23 Then
+
+                     GroupBox4.Text &= " check last position--if last position is less than diff then create next w by adding 1 to last position" & Chr(10)
+                     GroupBox4.Text &= "W(sz) points to W(" &  sz & ") whose value is " &  W( sz) & Chr(10)
+                     GroupBox4.Text &= " diff value is " &  diff & Chr(10)
+               End If
+          End If
+          If onnow = "W(sz) 24" Then
+               If CurrentLine = 24 Then
+
+                     GroupBox4.Text &= "W(sz) points to W(" &  sz & ") whose value is " &  W( sz) & Chr(10)
+               End If
+          End If
+          If onnow = "ElseIf 25" Then
+               If CurrentLine = 25 Then
+
+                     GroupBox4.Text &= " check last position--if last position is EQUAL to diff then find WHR" & Chr(10)
+                     GroupBox4.Text &= "W(sz) points to W(" &  sz & ") whose value is " &  W( sz) & Chr(10)
+                     GroupBox4.Text &= " diff value is " &  diff & Chr(10)
+               End If
+          End If
+          If onnow = "For 26" Then
+               If CurrentLine = 26 Then
+
+                     GroupBox4.Text &= " FOR loop finds WHR" & Chr(10)
+                     GroupBox4.Text &= " sz value is " &  sz & Chr(10)
+               End If
+          End If
+          If onnow = "ct 27" Then
+               If CurrentLine = 27 Then
+
+                     GroupBox4.Text &= " ct value is " &  ct & Chr(10)
+               End If
+          End If
+          If onnow = "If 28" Then
+               If CurrentLine = 28 Then
+
+                     GroupBox4.Text &= "W(nn) points to W(" &  ct & ") whose value is " &  W( ct) & Chr(10)
+                     GroupBox4.Text &= " diff value is " &  diff & Chr(10)
+               End If
+          End If
+          If onnow = "WHR 29" Then
+               If CurrentLine = 29 Then
+                     GroupBox4.Text &= " WHR value is " &  WHR & Chr(10)
+                     GroupBox4.Text &= " nn value is " &  ct & Chr(10)
+               End If
+          End If
+          If onnow = "Exit 30" Then
+               If CurrentLine = 30 Then
+
+                     GroupBox4.Text &= " exit loop immediately--found WHR " & Chr(10)
+               End If
+          End If
+          If onnow = "End 31" Then
+               If CurrentLine = 31 Then
+
+                     GroupBox4.Text &= " comparison W(nn) < diff ended " & Chr(10)
+               End If
+          End If
+          If onnow = "Next 32" Then
+               If CurrentLine = 32 Then
+
+                     GroupBox4.Text &= " continue search for WHR if nn > 0 " & Chr(10)
+               End If
+          End If
+          If onnow = "W(WHR) 33" Then
+               If CurrentLine = 33 Then
+
+                     GroupBox4.Text &= " WHR is position that will be written over" & Chr(10)
+                     GroupBox4.Text &= "W(WHR) points to W(" &  WHR & ") whose value is " &  W( WHR) & Chr(10)
+               End If
+          End If
+          If onnow = "For 34" Then
+               If CurrentLine = 34 Then
+
+                     GroupBox4.Text &= " WHR value is " &  WHR & Chr(10)
+                     GroupBox4.Text &= " sz value is " &  sz & Chr(10)
+               End If
+          End If
+          If onnow = "ct 35" Then
+               If CurrentLine = 35 Then
+
+                     GroupBox4.Text &= " ct value is " &  ct & Chr(10)
+               End If
+          End If
+          If onnow = "W(nn) 36" Then
+               If CurrentLine = 36 Then
+
+                     GroupBox4.Text &= "W(nn) points to W(" &  ct & ") whose value is " &  W( ct) & Chr(10)
+                     GroupBox4.Text &= "W(WHR) points to W(" &  WHR & ") whose value is " &  W( WHR) & Chr(10)
+               End If
+          End If
+          If onnow = "Next 37" Then
+               If CurrentLine = 37 Then
+
+                     GroupBox4.Text &= " if nn < sz then next elseif nn = sz then exit loop " & Chr(10)
+               End If
+          End If
+          If onnow = "End 38" Then
+               If CurrentLine = 38 Then
+
+                     GroupBox4.Text &= " multiple comparisons of W(sz) to diff ended " & Chr(10)
+               End If
+          End If
+          If onnow = "Do 41" Then
+               If CurrentLine = 41 Then
+
+                     GroupBox4.Text &= " end do loop if time2quit = true " & Chr(10)
+               End If
+          End If
+          If onnow = "For 42" Then
+               If CurrentLine = 42 Then
+
+                     GroupBox4.Text &= " copy W into ZZ " & Chr(10)
+                     GroupBox4.Text &= "W: " & wstr & Chr(10)
+                     GroupBox4.Text &= "ZZ: " & zzstr & Chr(10)
+               End If
+          End If
+          If onnow = "SUM 50" Then
+               If CurrentLine = 50 Then
+
+                     GroupBox4.Text &= " SUM value is " &  SUM & Chr(10)
+                     GroupBox4.Text &= " First value is " &  First & Chr(10)
+               End If
+          End If 
+          If onnow = "For 51" Then
+               If CurrentLine = 51 Then
+
+                     GroupBox4.Text &= " FOR loop that turns ZZ into combination - sorted subset " & Chr(10)
+                     GroupBox4.Text &= " diff value is " &  diff & Chr(10)
+               End If
+          End If
+          If onnow = "ct 52" Then
+               If CurrentLine = 52 Then
+
+                     GroupBox4.Text &= " ct value is " &  ct & Chr(10)
+               End If
+          End If
+          If onnow = "SUM 53" Then
+               If CurrentLine = 53 Then
+
+                     GroupBox4.Text &= " SUM value is " &  SUM & Chr(10)
+                     GroupBox4.Text &= "W(nn) points to W(" &  ct & ") whose value is " &  W( ct) & Chr(10)
+               End If
+          End If
+          If onnow = "ZZ(nn) 54" Then
+               If CurrentLine = 54 Then
+
+                     GroupBox4.Text &= "ZZ(nn) points to ZZ(" &  ct & ") whose value is " &  ZZ( ct) & Chr(10)
+                     GroupBox4.Text &= " nn value is " &  ct & Chr(10)
+               End If
+          End If
+          If onnow = "Next 55" Then
+               If CurrentLine = 55 Then
+
+                     GroupBox4.Text &= " ZZ will be written to " &  diff & " times " & Chr(10)
+               End If
+          End If
+          If onnow = "If 82" Then
+               If CurrentLine = 82 Then
+
+                     GroupBox4.Text &= " is this the last subset to be processed " & Chr(10)
+                     GroupBox4.Text &= "W(1) value is " &  W(1) & Chr(10)
+                     GroupBox4.Text &= " diff value is " &  diff & Chr(10)
+               End If
+          End If
+          If onnow = "'Debugger.Break() 83" Then
+               If CurrentLine = 83 Then
+
+                     GroupBox4.Text &= " commented out " & Chr(10)
+               End If
+          End If
+          If onnow = "Time2quit 84" Then
+               If CurrentLine = 84 Then
+
+                     GroupBox4.Text &= "  it was the last subset to be processed " & Chr(10)
+                     GroupBox4.Text &= " set time2quit to true " & Chr(10)
+               End If
+          End If
+          If onnow = "Environment.Exit(0) 85" Then
+               If CurrentLine = 85 Then
+
+                     GroupBox4.Text &= "  it was the last subset to be processed " & Chr(10)
+                     GroupBox4.Text &= " prevent indefinite looping -- shutdown program " & Chr(10)
+               End If
+          End If
+          If onnow = "End 86" Then
+               If CurrentLine = 86 Then
+
+                     GroupBox4.Text &= "  it was the last subset to be processed " & Chr(10)
+                     GroupBox4.Text &= " end comparison that alerted programmer to last subset " & Chr(10)
+               End If
+          End If
+          If onnow = "Nxt() 87" Then
+               If CurrentLine = 87 Then
+
+                     GroupBox4.Text &= " get a new W " & Chr(10)
+
+               End If
+          End If
+          If onnow = "Loop 88" Then
+               If CurrentLine = 88 Then
+
+                     GroupBox4.Text &= " loop if time2quit = false " & Chr(10)
+               End If
+          End If
+          If onnow = "BringToFront() 89" Then
+               If CurrentLine = 89 Then
+
+                     GroupBox4.Text &= " make form visible " & Chr(10)
+               End If
+          End If
+          If onnow = "Me.Text 90" Then
+               If CurrentLine = 90 Then
+
+                     GroupBox4.Text &= " assign me.text " & Chr(10)
+               End If
+          End If
+          If onnow = "Me.Show() 91" Then
+               If CurrentLine = 91 Then
+
+                     GroupBox4.Text &= " make me.text visible " & Chr(10)
+               End If
+          End If
+           BringToFront()
+           GroupBox4.Show()
+           Show()
+          Application.DoEvents()
+          System.Threading.Thread.Sleep(3000)
+
+     End Sub
+End Module

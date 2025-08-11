@@ -1,0 +1,32 @@
+if true, transfer control to 14
+W 0 0 0 0 0 0
+if true, transfer control to 16
+ check exit requirements 
+0
+if true, transfer control to 19
+
+ exited loop-prevented processing errors
+ in NXT(), created W 
+  last value, exit 
+W 0 0 0 0 0 0
+0
+ check exit requirements 
+0
+W 0 0 0 0 0 0
+  last value, exit 
+ in NXT(), created W 
+ time2quit = true, exit
+ check exit requirements 
+0
+ check exit requirements 
+0
+ZZ 0 0 0 0 0 0
+  last value, exit 
+ transferred control to first line in Nxt() 
+if true, transfer control to 77
+ if true, set Time2quit to true 
+ in NXT(), created W 
+if true, no more W to convert 
+ displayed control 
+ Me.text is checkOutput 
+ displayed Me.Text 

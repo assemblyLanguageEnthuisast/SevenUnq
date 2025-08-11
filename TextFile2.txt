@@ -1,0 +1,172 @@
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Button
+Imports acp_largeRecover
+Imports System.IO
+Module GroupBoxes
+     Public ReadOnly f1 As New acp_largeRecover.Form1
+     Sub GB1()
+          f1.GroupBox1.Text = "Program name is cmb_prm." & Chr(10)
+          f1.GroupBox1.Text = f1.GroupBox1.Text & "This tiny application finds permutations or combinations via" & Chr(10)
+          f1.GroupBox1.Text = f1.GroupBox1.Text & "two arrays W and ZZ." & Chr(10)
+          f1.GroupBox1.Text = f1.GroupBox1.Text & "W, the skeleton subset, becomes ZZ." & Chr(10)
+          f1.GroupBox1.Text = f1.GroupBox1.Text & "ZZ is created by adding index nn to W(nn)." & Chr(10)
+          f1.GroupBox1.Text = f1.GroupBox1.Text & "This program is used to list ALL combinations or All permutations sequentially." & Chr(10)
+          f1.GroupBox1.Text = f1.GroupBox1.Text & "RHS code determines if combinations versus permutations are listed in output file." & Chr(10)
+          f1.GroupBox1.Text = f1.GroupBox1.Text & "Step thru this application without setting debug breaks or pressing F11." & Chr(10)
+          f1.GroupBox1.Text = f1.GroupBox1.Text & "Most instructions will operate on W and ZZ." & Chr(10)
+          f1.GroupBox1.Text = f1.GroupBox1.Text & "--PlugAndNarrate may be the best way to understand some one else's code--" & Chr(10)
+          GB2()
+          GB3()
+          ' GB4()
+          f1.Visible = True
+          f1.Show()
+          UserProperties.kfal.Clear()
+          Application.DoEvents()
+          f1.GroupBox4.Text = Chr(10)
+          ' UserProperties.AfterWork.Clear()
+
+     End Sub
+     Sub GB2()
+          f1.GroupBox2.Visible = True
+          f1.GroupBox2.Text = Chr(10)
+     End Sub
+     Sub GB3()
+          f1.GroupBox3.Visible = True
+          f1.GroupBox3.Text = Chr(10)
+     End Sub
+     Sub GB4()
+
+          f1.GroupBox4.Show()
+          Narration = Chr(10) & UserProperties.CurrentLine
+          AEreview()
+          NarrateStep("AFTER EXECUTION " & Narration)
+          f1.GroupBox4.Text = Nothing
+
+     End Sub
+     Public Sub NarrateStep(stepDesc As String)
+          f1.GroupBox4.Text &= $"⏱ {Now:HH:mm:ss} → {stepDesc}" & vbCrLf
+          Application.DoEvents()
+          System.Threading.Thread.Sleep(100)
+     End Sub
+     Public Sub AEreview()
+          '1
+          If savedWords(0).Trim.ToLower = "do" And word_type(0).Trim.ToLower = "keyword" And savedWords.Count = 5 Then
+               Narration &= "Time2quit = " & Time2quit
+          End If
+          '2
+          If savedWords(0).Trim.ToLower = "for" And word_type(0).Trim.ToLower = "keyword" And savedWords.Count = 18 Then
+               Dim arr1 = CType(_w, Array)
+               Dim arr2 = CType(_zz, Array)
+               Narration &= " W = " & String.Join(", ", arr1.Cast(Of Object)) & Chr(10)
+               Narration &= " ZZ = " & String.Join(", ", arr2.Cast(Of Object))
+          End If
+          '3
+          If savedWords(0).Trim.ToLower = "sum" And word_type(0).Trim.ToLower = "identifier" And savedWords.Count = 3 Then
+               If savedWords(1).Contains("=") And savedWords(1).Count = 1 Then
+                    Narration &= "SUM raw value is " & SUM
+               ElseIf savedWords(1).Contains("=") And savedWords(1).Count = 2 Then
+                    Narration &= "SUM accumulated value is " & SUM
+               Else
+                    ' Debugger.Break()
+               End If
+          End If
+          '4
+          If savedWords(0).Trim.ToLower = "for" And word_type(0).Trim.ToLower = "keyword" And savedWords.Count = 8 Then
+               If savedWords(4).Trim.ToLower = "1" Then
+                    Narration &= " nn = " & ct
+               ElseIf savedWords(4).Trim.ToLower = "sz" Then
+                    Narration &= " nn = " & ct
+               Else
+                    ' Debugger.Break()
+               End If
+          End If
+          '5
+          If savedWords(0).Trim.ToLower = "zz(nn)" And word_type(0).Trim.ToLower = "array" And savedWords.Count = 3 Then
+               Narration &= " ZZ(" & ct & ") = " & ZZ(ct)
+
+          End If
+          '6
+          If savedWords(0).Trim.ToLower = "next" And word_type(0).Trim.ToLower = "keyword" And savedWords.Count = 1 Then
+               Narration &= " if condition unmet - repeat again "
+          End If
+          '6
+          If savedWords(0).Trim.ToLower = "if" And word_type(0).Trim.ToLower = "keyword" And savedWords.Count = 5 Then
+               If savedWords(1).Trim.ToLower = "w(sz)" Then
+                    outcome = W(sz) < diff
+                    Narration &= "If W(sz) < diff is " & outcome
+               ElseIf savedWords(1).Trim.ToLower = "w(nn)" Then
+                    outcome = W(ct) < diff
+                    Narration &= "If W(" & ct & ") < diff is " & outcome
+               Else
+                    ' Debugger.Break()
+               End If
+          End If
+
+          '8
+          If savedWords(0).Trim.ToLower = "w(sz)" And word_type(0).Trim.ToLower = "array" And savedWords.Count = 3 Then
+               Narration &= " W(" & sz & ") = " & W(sz)
+          End If
+          '9
+          If savedWords(0).Trim.ToLower = "elseif" And word_type(0).Trim.ToLower = "keyword" And savedWords.Count = 5 Then
+               outcome = W(sz) = diff
+               Narration &= "W(sz) = diff is " & outcome
+          End If
+          '10
+          If savedWords(0).Trim.ToLower = "sum" And word_type(0).Trim.ToLower = "identifier" And savedWords.Count = 7 Then
+               outcome = SUM = 25 + First
+               Narration &= "SUM = 25 + First " & outcome
+          End If
+          '11
+          If savedWords(0).Trim.ToLower = "loop" And word_type(0).Trim.ToLower = "keyword" And savedWords.Count = 1 Then
+
+          End If
+          '12
+          If savedWords(0).Trim.ToLower = "whr" And word_type(0).Trim.ToLower = "identifier" And savedWords.Count = 3 Then
+               Narration &= "WHR = " & ct
+          End If
+          '13
+          If savedWords(0).Trim.ToLower = "exit" And word_type(0).Trim.ToLower = "keyword" And savedWords.Count = 2 Then
+               Narration &= "ignored predetermined rule - exited for loop immediately"
+          End If
+          '14
+          If savedWords(0).Trim.ToLower = "w(whr)" And word_type(0).Trim.ToLower = "array" And savedWords.Count = 3 Then
+               Narration &= " W(" & WHR & ") = " & W(WHR)
+          End If
+          '15
+          If savedWords(0).Trim.ToLower = "rhs" And word_type(0).Trim.ToLower = "identifier" And savedWords.Count = 3 Then
+               Narration &= " rhs = W(" & WHR & ") or " & W(WHR)
+          End If
+          '16
+          If savedWords(0).Trim.ToLower = "for" And word_type(0).Trim.ToLower = "keyword" And savedWords.Count = 10 Then
+               Narration &= " WHR + 1 = " & WHR + 1 & Chr(10)
+               Narration &= " sz = " & sz
+          End If
+          '17
+          If savedWords(0).Trim.ToLower = "w(nn)" And word_type(0).Trim.ToLower = "array" And savedWords.Count = 3 Then
+               Narration &= " W(" & ct & ") = " & W(ct)
+          End If
+          '18
+          If savedWords(0).Trim.ToLower = "end" And word_type(0).Trim.ToLower = "keyword" And savedWords.Count = 2 Then
+               Narration &= " end comparison  "
+          End If
+          '19
+          If savedWords(0).Trim.ToLower = "time2quit" And word_type(0).Trim.ToLower = "identifier" And savedWords.Count = 3 Then
+               outcome = Time2quit
+               Narration &= "Time2quit is " & outcome
+          End If
+          '20
+          If savedWords(0).Trim.ToLower = "bringtofront()" And word_type(0).Trim.ToLower = "identifier" And savedWords.Count = 1 Then
+               Narration &= " method executed "
+          End If
+          '21
+          If savedWords(0).Trim.ToLower = "me.text" And word_type(0).Trim.ToLower = "identifier" And savedWords.Count = 3 Then
+               Narration &= " method task performed "
+          End If
+          '22
+          If savedWords(0).Trim.ToLower = "me.show()" And word_type(0).Trim.ToLower = "identifier" And savedWords.Count = 1 Then
+               Narration &= " method executed "
+          End If
+
+     End Sub
+
+
+End Module

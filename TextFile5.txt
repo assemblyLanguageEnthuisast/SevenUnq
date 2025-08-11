@@ -1,0 +1,155 @@
+﻿Imports System.Reflection
+Imports System.ComponentModel
+Imports System.Linq.Expressions
+
+Public Class Form1
+     Public rw As Integer = 10
+     Public sz As Integer = 5
+     Public diff As Integer = rw - sz
+     Public W(sz) As Integer
+     Public ZZ(sz) As Integer
+     Public WHR As Integer = 0
+     Public Str1 As String = ""
+     Public Time2quit As Boolean = False
+     Public SUM As Integer = 0
+     Public First As Integer = (sz * (sz + 1)) \ 2
+     Public theApplication() As String
+     Public CurrentLine As Integer
+     Public nmbr As Integer = 0
+     Public onnow As String
+     Public str6 As String = ""
+     Public ct As Integer = 0
+     Sub Nxt()
+          SH() : If W(sz) < diff Then : GB4()
+               SH() : W(sz) += 1 : GB4()
+               SH() : ElseIf W(sz) = diff Then : GB4()
+               SH() : For nn = sz To 1 Step -1 : GB4()
+                    SH() : ct = nn : GB4()
+                    SH() : If W(nn) < diff Then : GB4()
+                         SH() : WHR = nn : GB4()
+                         SH() : Exit For : GB4()
+                         SH() : End If : GB4()
+                    SH() : Next : GB4()
+               SH() : W(WHR) += 1 : GB4()
+               SH() : For nn = WHR + 1 To sz Step 1 : GB4()
+                    SH() : ct = nn : GB4()
+                    SH() : W(nn) = W(WHR) : GB4()
+                    SH() : Next : GB4()
+               SH() : End If : GB4()
+     End Sub
+     Sub Bgn1()
+          SH() : Do Until Time2quit = True
+               SH() : For i As Integer = 0 To sz : ct = i : ZZ(i) = W(i) : Next : GB4()
+               BringToFront()
+               Str1 = String.Join(Chr(32), W)
+               Me.Text = "W = " & Str1
+               Me.Show()  'Me.GroupBox3.ForeColor = System.Drawing.Color.DarkRed
+               Me.GroupBox3.Text = "NXT() creates the next W" & Chr(10) & "Input:W = " & Str1 & Chr(10)
+               System.Threading.Thread.Sleep(100)
+               Application.DoEvents()
+               SH() : SUM = First : GB4()
+               SH() : For nn = 1 To diff Step 1 : GB4()
+                    SH() : ct = nn : GB4()
+                    SH() : SUM += W(nn) : GB4()
+                    SH() : ZZ(nn) += nn : GB4()
+                    SH() : Next : GB4()
+               BringToFront()
+               Str1 = String.Join(Chr(32), ZZ)
+               Me.Text = "ZZ = " & Str1
+               Me.Show()
+               Me.GroupBox3.Text &= "W is stored into ZZ -- each ZZ(nn) is increased by index nn." & Chr(10) & "Output:ZZ = " & Str1 & Chr(10)
+               Me.GroupBox3.Text &= "ZZ = "
+               For nn = 0 To sz Step 1
+                    str6 = "(" & W(nn) & " + " & nn & ") +"
+                    If nn = sz Then
+                         str6 = "(" & W(nn) & " + " & nn & ") " & Chr(10)
+                    End If
+                    Me.GroupBox3.Text = Me.GroupBox3.Text & str6 & Chr(32)
+               Next
+               str6 = ""
+               Me.GroupBox3.Text = Me.GroupBox3.Text & "All sums will be greater than or equal to the first sum. For row = " & rw & " and sz = " & 5 & ", that sum is " & First & Chr(10)
+               'Debugger.Break()
+               nmbr = First
+               For nn = 0 To sz Step 1
+                    nmbr += W(nn)
+               Next
+
+               Me.GroupBox3.Text = Me.GroupBox3.Text & " ZZ SUM = " & nmbr & Chr(32)
+               Me.Show()
+               Application.DoEvents()
+               System.Threading.Thread.Sleep(1000)
+               Application.DoEvents()
+               SH() : If W(1) = diff Then : GB4()
+                    'Debugger.Break()
+                    SH() : Time2quit = True : GB4()
+                    SH() : Environment.Exit(0) : GB4()
+                    SH() : End If : GB4()
+               SH() : Nxt() : GB4()
+               SH() : Loop : GB4()
+          SH() : BringToFront() : GB4()
+          SH() : Me.Text = "checkOutput" : GB4()
+          SH() : Me.Show() : GB4()
+     End Sub
+     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
+          theApplication = LoadLines()
+          Application.DoEvents()
+          UPDINFOx.Main()
+          Gb1()
+          Bgn1()
+     End Sub
+     Sub SH()
+          CurrentLine = New StackFrame(1, True).GetFileLineNumber()
+          Str1 = theApplication(CurrentLine - 1).ToString.Trim
+          words = Str1.Split(New Char() {" "c})
+          If CurrentLine = 87 OrElse CurrentLine = 23 Then
+               GroupBox2.Text = Nothing
+          End If
+          GroupBox2.Text &= Chr(10) & CurrentLine & "    " & Str1
+          GroupBox2.Show()
+          GroupBox2.ForeColor = System.Drawing.Color.White
+          onnow = words(0) & Chr(32) & CurrentLine
+          PlugVariables.onnow = onnow
+          PlugVariables.CurrentLine = CurrentLine
+          NarrateOutcome.onnow = onnow
+          NarrateOutcome.CurrentLine = CurrentLine
+          BringToFront()
+          Show()
+          Application.DoEvents()
+          System.Threading.Thread.Sleep(1000)
+          PlugVariables.Main()
+     End Sub
+     Sub GB4()
+          NarrateOutcome.Main()
+     End Sub
+     Sub Gb1()
+          GroupBox1.Text = "Program name is ListOfPermutations." & Chr(10)
+          GroupBox1.Text &= "This tiny application finds permutations or combinations via" & Chr(10)
+          GroupBox1.Text &= "two arrays W and ZZ." & Chr(10)
+          GroupBox1.Text &= "W, the skeleton subset, becomes ZZ." & Chr(10)
+          GroupBox1.Text &= "ZZ is created by adding index nn to W(nn)." & Chr(10)
+          GroupBox1.Text &= "The order of subsets is PREDETERMINED and UNCHANGEABLE." & Chr(10)
+          GroupBox1.Text &= "The contents of the outfile depends on how RHS is populated." & Chr(10)
+          GroupBox1.Text &= "Step thru this application without setting BREAKPOINTS or PRESSING F11." & Chr(10)
+          GroupBox1.Text &= "See variables values being plugged in and experience this in real time." & Chr(10)
+          GroupBox1.Text &= "--PlugAndNarrate may be the best way to begin to understand some one else's code--" & Chr(10)
+          Visible = True
+          Me.Show()
+          Application.DoEvents()
+
+
+     End Sub
+
+     Friend Function LoadLines() As String()
+          Try
+               Return System.IO.File.ReadAllLines("C:\Users\vbart\source\REPOS\ListOfPermutations\original.txt")
+          Catch ex As Exception
+               Return {}
+               Throw New Exception("ReadAllLines Failed")
+          End Try
+     End Function
+
+     Private Sub GroupBox4_Enter(sender As Object, e As EventArgs) Handles GroupBox4.Enter
+
+
+     End Sub
+End Class

@@ -1,0 +1,41 @@
+﻿
+
+
+Public Class Form1
+    Sub Nxt()      
+        If w(sz) < diff Then
+            w(sz) += 1
+        ElseIf w(sz) = diff Then
+            For nn = sz To 1 Step -1
+                If w(nn) < diff Then
+                    whr = nn
+                    Exit For
+                End If
+            Next
+            w(whr) += 1
+            For nn = whr + 1 To sz Step 1
+                 w(nn) = w(whr)
+                'w(nn) = 0
+            Next
+        End If
+    End Sub
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load        
+        Do Until time2quit = True
+            Array.Copy(w, zz, sz + 1)
+            sum = first
+            For nn = 1 To diff Step 1
+                sum += w(nn)
+                zz(nn) += nn
+            Next
+            str1 = String.Join(Chr(32), zz)
+            Debug.WriteLine(str1 & "   " & sum)
+            Nxt()
+            If sum = 25 + first Then
+                time2quit = True
+            End If
+        Loop
+        BringToFront()
+        Me.Text = "check output"
+        Me.Show()        
+    End Sub
+End Class

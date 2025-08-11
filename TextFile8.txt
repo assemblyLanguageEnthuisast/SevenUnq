@@ -1,0 +1,14 @@
+﻿Dim varName As String = od(currentIndex)
+Dim varValue As String = GetValueByName(varName) ' You define this
+
+GroupBox2.Text &= $"{varName} updated to {varValue}" & vbCrLf
+==================================================================
+Dim nn As Integer = 1
+Dim W() As Integer = {0, 4, 7}  ' Example array
+Dim diff As Integer = 5
+
+Dim nn As Integer = 1
+Dim W() As Integer = {0, 4, 7}  ' Example array
+Dim diff As Integer = 5
+
+Dim line As String = $"  nn={nn}         w({nn})={W(nn)}     diff={diff}"

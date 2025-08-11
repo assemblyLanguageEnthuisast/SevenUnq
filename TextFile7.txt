@@ -1,0 +1,222 @@
+﻿Imports System.ComponentModel
+Imports System.IO
+Imports System.Linq.Expressions
+Imports System.Reflection
+Imports $safeprojectname$
+
+Module SevenLists
+     Friend f1 As New $safeprojectname$.Form1
+     Friend unq As New List(Of Integer)
+     Friend unqct As New List(Of Integer)
+     Friend beforeExe As New List(Of String)
+     Friend afterExe As New List(Of String)
+     Friend other As New List(Of String)
+     Friend ln1 As New List(Of String)
+     Friend logs As New List(Of String)
+     Friend authorComments As New List(Of String)
+     Friend outcome As New List(Of String)
+     Friend words() As String
+     Friend str1 As String
+     Friend plug As String
+     Dim whr1 As Integer
+     Friend pad10 As String = "           "
+     Friend CurrentLine As Integer
+     Dim theApplication() As String = System.IO.File.ReadAllLines("C:\Users\vbart\source\REPOS\$safeprojectname$\original.txt")
+     Sub WriteBeforeAndAfter()
+          whr1 = unq.IndexOf(CInt(CurrentLine))
+          If whr1 = -1 Then
+
+               unq.Add(CurrentLine)
+               unqct.Add(unqct.Count - 1)
+               nmbr = unqct.Count - 1
+               beforeExe.Add("")
+               afterExe.Add("")
+               other.Add("")
+               ln1.Add(theApplication(CurrentLine - 1).Trim)
+               logs.Add("")
+               authorComments.Add("")
+               str1 = theApplication(CurrentLine - 1).ToString.Trim
+               words = str1.Split(New Char() {" "c})
+
+               If words(0).Contains("If") Then
+                    beforeExe(nmbr) &= "Comparison about to be made"
+                    afterExe(nmbr) &= "if true, transfer control to " & CurrentLine + 1
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("End") Then
+                    beforeExe(nmbr) &= " transfer control to " & CurrentLine + 1
+                    afterExe(nmbr) &= " in NXT(), created W "
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("For") Then
+                    beforeExe(nmbr) &= " perform actions in loop certain number of times "
+                    afterExe(nmbr) &= " check exit requirements "
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("Exit") Then
+                    beforeExe(nmbr) &= " leave immediately "
+                    afterExe(nmbr) &= " exited loop-prevented processing errors"
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+
+               If words(0).Contains("Next") Then
+                    beforeExe(nmbr) &= " check  nn or i "
+                    afterExe(nmbr) &= "  last value, exit "
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("Do") Then
+                    beforeExe(nmbr) &= " created ZZ, get new W"
+                    afterExe(nmbr) &= " time2quit = true, exit"
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("Loop") Then
+                    beforeExe(nmbr) &= " check time2quit "
+                    afterExe(nmbr) &= "if true, no more W to convert "
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("ct") Then
+                    beforeExe(nmbr) &= " local variable "
+                    afterExe(nmbr) &= UserProperties.ct
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("W(") Then
+                    beforeExe(nmbr) &= " W value about to change"
+                    Dim arr = CType(_w, Array)
+                    afterExe(nmbr) &= "W " & String.Join(Chr(32), _w)
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+                   
+               End If
+               If words(0).Contains("ZZ(") Then
+                    beforeExe(nmbr) &= " ZZ value about to change "
+                    Dim arr = CType(_zz, Array)
+                    afterExe(nmbr) &= "ZZ " & String.Join(Chr(32), _zz)
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+                   
+                End If
+               If words(0).Contains("SUM") Then
+                    beforeExe(nmbr) &= " update SUM "
+                    afterExe(nmbr) &= SUM
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+                       
+               End If
+               If words(0).Contains("rhs") Then
+                    beforeExe(nmbr) &= " update rhs "
+                    afterExe(nmbr) &= rhs
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("Nxt()") Then
+                    beforeExe(nmbr) &= " Create new W "
+                    afterExe(nmbr) &= " transferred control to first line in Nxt() "
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("Time2quit") Then
+                    beforeExe(nmbr) &= " processed last W "
+                    afterExe(nmbr) &= " if true, set Time2quit to true "
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("BringToFront()") Then
+                    beforeExe(nmbr) &= " positioned control "
+                    afterExe(nmbr) &= " displayed control "
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("Me.Text") Then
+                    beforeExe(nmbr) &= " assign value to Me.text "
+                    afterExe(nmbr) &= " Me.text is checkOutput "
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+               If words(0).Contains("Me.Show()") Then
+                    beforeExe(nmbr) &= " prepare to show Me.Text "
+                    afterExe(nmbr) &= " displayed Me.Text "
+                    other(nmbr) &= ""
+                    logs(nmbr) &= ""
+                    authorComments(nmbr) &= ""
+               End If
+
+          End If
+
+     End Sub
+     Sub Main()
+
+          For nn = 1 To theApplication.Count - 1 Step 1
+               CurrentLine = nn
+               If (nn >= 12 And nn <= 28) _
+                                   OrElse (nn >= 32 And nn <= 33) _
+                                   OrElse (nn >= 36 And nn <= 41) _
+                                   OrElse (nn >= 62 And nn <= 69) Then
+                    WriteBeforeAndAfter()
+               End If
+          Next
+
+          Using wr1 As StreamWriter = New StreamWriter("C:\Users\vbart\source\repos\$safeprojectname$\upd2.txt")
+               For nn = 0 To unq.Count - 1 Step 1
+                    wr1.WriteLine(nn + 1 & "     " & unq(nn) & "     " & ln1(nn))
+               Next
+          End Using
+
+          Using wr1 As StreamWriter = New StreamWriter("C:\Users\vbart\source\repos\$safeprojectname$\LINNO.txt")
+               For nn = 0 To unq.Count - 1 Step 1
+                    wr1.WriteLine(nn + 1 & "     " & ln1(nn))
+               Next
+          End Using
+
+          Using wr1 As StreamWriter = New StreamWriter("C:\Users\vbart\source\repos\$safeprojectname$\before.txt")
+               For nn = 0 To unq.Count - 1 Step 1
+                    wr1.WriteLine(beforeExe(nn))
+               Next
+          End Using
+
+          Using wr1 As StreamWriter = New StreamWriter("C:\Users\vbart\source\repos\$safeprojectname$\after.txt")
+               For nn = 0 To unq.Count - 1 Step 1
+                    wr1.WriteLine(afterExe(nn))
+               Next
+          End Using
+
+          Using wr1 As StreamWriter = New StreamWriter("C:\Users\vbart\source\repos\$safeprojectname$\otherDetails.txt")
+               For nn = 0 To unq.Count - 1 Step 1
+                    wr1.WriteLine(other(nn))
+               Next
+          End Using
+
+          Using wr1 As StreamWriter = New StreamWriter("C:\Users\vbart\source\repos\$safeprojectname$\ac.txt")
+               For nn = 0 To unq.Count - 1 Step 1
+                    wr1.WriteLine(authorComments(nn))
+               Next
+          End Using
+
+          ' Environment.Exit(0)
+
+     End Sub
+End Module
+

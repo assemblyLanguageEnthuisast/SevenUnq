@@ -1,0 +1,44 @@
+﻿==For large programs-narration line by line is not ideal. Every token should appear in Generic Lists.
+names in userProperties must be added to generic lists.  Line by line narration is no longer needed.
+CONSTANT,ARRAY, AND IDENTIFIER SHOULD BE LISTED ON BEFORE SCREEN===CODE IS TRICK 
+It is easier to remove first entry when line begins with For and for is a keyword -- trying to keep it from entering leads to too many errors
+
+'blockstarters - decision
+'userarrays - array
+'userlocals - locals
+'userconstants - constants
+'inuprprts  - properties
+'userfields - fields
+'declarednames - methods
+'members - members
+=============================================================================================================
+ For jj = 0 To words.Count - 1 Step 1
+               Dim DESCRIPTION = GenericLists.Description(words(jj))
+               word_type.Add(DESCRIPTION)
+               If word_type(jj).Trim.ToLower = "array" Then
+                    search4.Add(((words(jj))))
+               ElseIf word_type(jj).Trim.ToLower = "constant" Then
+                    search4.Add(((words(jj))))
+               ElseIf word_type(jj).Trim.ToLower = "identifier" Then
+                    search4.Add(((words(jj))))
+               End If
+Next
+========================================================================================================
+FileOpen(1, "c:\trash.txt", OpenMode.Output)   ' Open file for output.
+Print(1, "This is a test.")   ' Print text to file.
+PrintLine(1)   ' Print blank line to file.
+PrintLine(1, "Zone 1", TAB(), "Zone 2")   ' Print in two print zones.
+PrintLine(1, "Hello", "World")   ' Separate strings with a tab.
+PrintLine(1, SPC(5), "5 leading spaces ")   ' Print five leading spaces.
+PrintLine(1, TAB(10), "Hello")   ' Print word at column 10.
+
+' Assign Boolean, Date, and Error values.
+Dim aBool As Boolean
+Dim aDate As DateTime
+aBool = False
+aDate = DateTime.Parse("February 12, 1969")
+
+' Dates and booleans are translated using locale settings of your system.
+PrintLine(1, aBool, " is a Boolean value")
+PrintLine(1, aDate, " is a date")
+FileClose(1)   ' Close file.

@@ -1,0 +1,32 @@
+1     13     If W(sz) < diff Then
+2     14     W(sz) += 1
+3     15     ElseIf W(sz) = diff Then
+4     16     For nn = sz To 1 Step -1
+5     17     ct = nn
+6     18     If W(nn) < diff Then
+7     19     WHR = nn
+8     20     Exit For
+9     21     End If
+10     22     Next
+11     23     W(WHR) += 1
+12     24     rhs = W(WHR)
+13     25     For nn = WHR + 1 To sz Step 1
+14     26     ct = nn
+15     27     W(nn) = rhs
+16     28     Next
+17     29     End If
+18     33     Do Until Time2quit = True
+19     34     For i As Integer = 0 To sz : ct = i : ZZ(i) = W(i) : Next
+20     42     SUM = First
+21     43     For nn = 1 To diff Step 1
+22     45     SUM += W(nn)
+23     46     ZZ(nn) += nn
+24     47     Next
+25     75     Nxt()
+26     76     If SUM = (sz * diff) + First Then
+27     77     Time2quit = True
+28     78     End If
+29     79     Loop
+30     80     BringToFront()
+31     81     Me.Text = "checkOutput"
+32     82     Me.Show()
